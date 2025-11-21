@@ -1,110 +1,88 @@
-<!doctype html>
-<html lang="it">
+<!DOCTYPE html>
+<html lang="it" data-page="home">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title data-i18n="title">LIMONI WEB</title>
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LIMONI WEB</title>
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+    <circle cx='32' cy='32' r='20' fill='%23FFD400' stroke='black' stroke-width='2'/>
+  </svg>">
+  <script defer src="script.js"></script>
 </head>
-<body class="theme-dark">
-<!-- Page loader -->
-<div id="page-loader" class="page-loader">
-  <div class="loader-inner">
-    <div id="progress-bar" class="progress-bar"></div>
+<body class="theme-auto">
+  <!-- Loader -->
+  <div id="page-loader">
+    <div class="loader-bar"><span></span></div>
   </div>
-</div>
 
-<!-- Navbar -->
-<header id="site-header" class="site-header">
-  <nav class="nav container">
-    <div class="nav-left">
-      <a class="nav-brand" href="index.html">
-        <svg id="mini-logo" viewBox="0 0 100 100" width="40" height="40" aria-hidden="true">
-          <!-- lemon outline -->
-          <path id="lemon-path" d="M50 10 C70 10 90 30 70 50 C90 70 70 90 50 90 C30 90 10 70 30 50 C10 30 30 10 50 10 Z" fill="none" stroke="#FFD400" stroke-width="2" stroke-linecap="round"/>
+  <!-- Navbar injected by script.js -->
+  <header id="navbar"></header>
+
+  <!-- Hero with background -->
+  <main class="page page-home" style="--bg:url('https://images.unsplash.com/photo-1598960809231-5504c3b90a6f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <section class="hero">
+      <!-- Animated minimal logo: lemon self-drawing line -->
+      <div class="logo-stack">
+        <svg class="lemon-logo" viewBox="0 0 200 120" width="220" height="120" aria-hidden="true">
+          <defs>
+            <linearGradient id="lemonGrad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stop-color="#FFD400"/>
+              <stop offset="100%" stop-color="#FFE766"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Lemon outline path (self-drawing) -->
+          <path d="M100,15
+                   C130,20 160,40 170,60
+                   C160,80 130,100 100,105
+                   C70,100 40,80 30,60
+                   C40,40 70,20 100,15 Z"
+                fill="none"
+                stroke="url(#lemonGrad)"
+                stroke-width="5"
+                stroke-linecap="round"
+                filter="url(#glow)"
+                class="logo-path"/>
+          <!-- Leaf -->
+          <path d="M130,25 C140,10 160,10 170,25 C160,30 140,30 130,25 Z"
+                fill="#78C257" stroke="black" stroke-width="2" opacity="0.9"/>
         </svg>
-        <span class="brand-text" data-i18n="brand">LIMONI WEB</span>
-      </a>
-    </div>
-    <div class="nav-center">
-      <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
-      <a href="about.html" class="nav-link" data-i18n="nav_about">About</a>
-      <a href="limone-hacker.html" class="nav-link" data-i18n="nav_hacker">Limone Hacker</a>
-    </div>
-    <div class="nav-right">
-      <div class="socials">
-        <a href="#" class="social-link" title="Instagram" aria-label="Instagram">
-          <!-- instagram icon inline SVG -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="social-icon"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" stroke="#fff"/></svg>
-        </a>
-        <a href="#" class="social-link" title="TikTok" aria-label="TikTok">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="social-icon"><path d="M9 2v12a4 4 0 104 4" stroke="#fff"/></svg>
-        </a>
+
+        <!-- Title: centered, bold, uppercase, yellow with thin black border -->
+        <h1 class="site-title" data-i18n="title">LIMONI WEB</h1>
+
+        <!-- Elegant appearance of text "LIMONI WEB" following logo draw -->
+        <div class="logo-text elegant" aria-hidden="true">LIMONI WEB</div>
       </div>
 
-      <select id="lang-select" class="lang-select" aria-label="Language">
-        <option value="it">ITALIANO</option>
-        <option value="en">ENGLISH</option>
-        <option value="fr">FRANCESE</option>
-        <option value="es">SPANISH</option>
-        <option value="ru">RUSSIAN</option>
-        <option value="cn">CHINESE</option>
-      </select>
-
-      <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">🌓</button>
-    </div>
-  </nav>
-</header>
-
-<!-- Hero -->
-<main id="main" class="main">
-  <section class="hero" style="background-image:url('https://images.unsplash.com/photo-1598960809231-5504c3b90a6f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content container">
-      <!-- big centered title -->
-      <h1 class="hero-title" id="main-title">LIMONI WEB</h1>
-
-      <!-- animated logo + brand -->
-      <div class="logo-wrap">
-        <svg id="logo" viewBox="0 0 200 120" width="200" height="120">
-          <path id="lemon" d="M100 20 C130 20 170 50 140 80 C170 110 130 140 100 140 C70 140 30 110 60 80 C30 50 70 20 100 20 Z"
-                fill="none" stroke="#FFD400" stroke-width="4" stroke-linecap="round"/>
-          <!-- leaf -->
-          <path id="leaf" d="M120 10 C135 5 145 20 125 30" fill="none" stroke="#9ACD32" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div id="brand-animated" class="brand-animated">LIMONI WEB</div>
+      <!-- Buttons group -->
+      <div class="cta-group">
+        <button class="btn btn-primary btn-particles" data-link="inizia" data-i18n="btn_start">Inizia</button>
       </div>
 
-      <!-- Buttons -->
-      <div class="hero-buttons">
-        <button id="start-btn" class="btn btn-primary" data-i18n="btn_start">Inizia</button>
-
-        <div class="two-soldiers">
-          <button data-target="soldato-israeliano.html" class="btn btn-danger soldier">Soldato Israeliano</button>
-          <button data-target="soldato-palestinese.html" class="btn btn-blue soldier">Soldato Palestinese</button>
-        </div>
-
-        <button data-target="iscrivi.html" class="btn btn-green" id="subscribe-btn">Iscriviti</button>
+      <!-- Soldier buttons with explosion animation -->
+      <div class="cta-row">
+        <button class="btn btn-red btn-explode" data-link="israel" data-i18n="btn_israel">Soldato Israeliano</button>
+        <button class="btn btn-blue btn-explode" data-link="palestina" data-i18n="btn_palestina">Soldato Palestinese</button>
       </div>
-    </div>
-  </section>
-</main>
 
-<!-- footer -->
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="centered">
-      <div class="footer-big" data-i18n="footer_created">WEBSITE CREATED BY: I DON’T KNOW!!!</div>
-      <div class="footer-small" data-i18n="footer_reserved">Tutti i diritti riservati a I DON’T KNOW</div>
-      <div class="footer-contact">Telefono: +39 0123456789</div>
-      <div class="footer-contact">Email: idontknow@blabla.hehe</div>
-    </div>
-  </div>
-</footer>
+      <!-- Subscribe button with sparkles -->
+      <div class="cta-group">
+        <button class="btn btn-green btn-sparkle" data-link="iscriviti" data-i18n="btn_subscribe">Iscriviti</button>
+      </div>
+    </section>
+  </main>
 
-<canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
-
-<script src="assets/js/main.js"></script>
+  <!-- Footer injected by script.js -->
+  <footer id="footer"></footer>
 </body>
 </html>
