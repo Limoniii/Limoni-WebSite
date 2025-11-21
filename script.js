@@ -1,157 +1,161 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ---------------------------------------------
-    // 1. PAGE LOADER
-    // ---------------------------------------------
-    const progressBar = document.getElementById('progress-bar');
-    const pageLoader = document.getElementById('page-loader');
-    let width = 0;
+    
+    // -------------------------------------------------------------------------
+    // 1. PAGE LOADER (Progress Bar)
+    // -------------------------------------------------------------------------
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    const loaderBar = document.getElementById('loader-bar');
+    let loadProgress = 0;
+
     const interval = setInterval(() => {
-        if (width >= 100) {
+        loadProgress += 5;
+        if (loadProgress >= 100) {
+            loadProgress = 100;
             clearInterval(interval);
             setTimeout(() => {
-                pageLoader.style.opacity = '0';
-                setTimeout(() => pageLoader.style.display = 'none', 500);
-            }, 300);
-        } else {
-            // Simula il caricamento
-            width += Math.random() * 5 + 1; // Incremento casuale
-            if (width > 100) width = 100;
-            progressBar.style.width = width + '%';
+                loaderWrapper.classList.add('hidden');
+            }, 300); // 300ms per la transizione di opacity
         }
-    }, 100);
+        loaderBar.style.setProperty('--width', `${loadProgress}%`);
+    }, 50);
 
-    // ---------------------------------------------
-    // 2. NAV BAR NASCONDI/MOSTRA (Scroll)
-    // ---------------------------------------------
-    const navbar = document.querySelector('.navbar');
+    // Iniettare la variabile CSS per l'animazione della barra
+    const style = document.createElement('style');
+    style.innerHTML = '#loader-bar:after { width: var(--width, 0%); }';
+    document.head.appendChild(style);
+
+
+    // -------------------------------------------------------------------------
+    // 2. NAVBAR DINAMICA (Nascondi/Mostra su Scroll)
+    // -------------------------------------------------------------------------
+    const navbar = document.getElementById('navbar');
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY < lastScrollY) {
-            // Scrolling Up
-            navbar.classList.remove('hidden');
-        } else if (window.scrollY > lastScrollY && window.scrollY > 100) {
-            // Scrolling Down (dopo aver superato 100px)
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            // Scrolling Down (Nascondi)
             navbar.classList.add('hidden');
+        } else {
+            // Scrolling Up (Mostra)
+            navbar.classList.remove('hidden');
         }
         lastScrollY = window.scrollY;
     });
 
-    // ---------------------------------------------
-    // 3. DARK MODE TOGGLE
-    // ---------------------------------------------
-    const themeToggle = document.getElementById('theme-toggle');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
 
-    if (currentTheme === 'dark') {
-        themeToggle.textContent = '☀️'; // Icona Sole
+    // -------------------------------------------------------------------------
+    // 3. TEMA CHIARO/SCURO (Light/Dark Mode)
+    // -------------------------------------------------------------------------
+    const modeToggle = document.getElementById('mode-toggle');
+    
+    // Funzione per impostare la modalità
+    const setMode = (mode) => {
+        document.body.classList.toggle('dark-mode', mode === 'dark');
+        modeToggle.innerHTML = mode === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        localStorage.setItem('theme', mode);
+    };
+
+    // Inizializza la modalità basata sulla preferenza salvata o di sistema
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setMode(savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setMode('dark');
     } else {
-        themeToggle.textContent = '🌙'; // Icona Luna
+        setMode('light');
     }
 
-    themeToggle.addEventListener('click', () => {
-        let theme = document.documentElement.getAttribute('data-theme');
-        if (theme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            themeToggle.textContent = '🌙';
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            themeToggle.textContent = '☀️';
-        }
+    // Toggle al click
+    modeToggle.addEventListener('click', () => {
+        const newMode = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+        setMode(newMode);
     });
 
-    // ---------------------------------------------
-    // 4. TERMINALE HACKER (solo su hacker.html)
-    // ---------------------------------------------
-    const terminal = document.getElementById('terminal-output');
-    const executeBtn = document.getElementById('execute-command');
-    const commandInput = document.getElementById('command-input');
 
-    if (terminal && executeBtn && commandInput) {
-        
-        const commands = [
-            { cmd: 'squeeze --juice', output: 'Processing... Extraction complete. New citrus core generated.' },
-            { cmd: 'limone.scan()', output: 'Scanning port 443... Found vulnerability: Too much zest! Initiating countermeasure.' },
-            { cmd: 'injectVitaminC()', output: 'Injecting payload: [###################] 100% COMPLETE. Target saturated.' },
-            { cmd: 'help', output: 'Available commands: squeeze --juice, limone.scan(), injectVitaminC(), exit.' },
-            { cmd: 'exit', output: 'Session terminated. Grazie per l\'assaggio.' }
-        ];
-
-        function typeOutput(text) {
-            const line = document.createElement('div');
-            line.className = 'output-line';
-            terminal.appendChild(line);
-
-            let i = 0;
-            const speed = 20; // Velocità di digitazione
-
-            function typeWriter() {
-                if (i < text.length) {
-                    line.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, speed);
-                } else {
-                    terminal.scrollTop = terminal.scrollHeight; // Scrolla in fondo
-                    commandInput.focus();
-                }
-            }
-            typeWriter();
-        }
-
-        function executeCommand(command) {
-            if (!command) return;
-
-            // Mostra il comando digitato nel terminale
-            const inputLine = document.createElement('div');
-            inputLine.className = 'terminal-line';
-            inputLine.innerHTML = `<span class="prompt">$ LIMONE_HACKER:</span> ${command}`;
-            terminal.appendChild(inputLine);
-
-            const found = commands.find(c => c.cmd === command.trim());
-
-            if (found) {
-                typeOutput(found.output);
-            } else {
-                typeOutput(`[ERROR] Command not found: ${command}. Try 'help'.`);
-            }
-        }
-
-        executeBtn.addEventListener('click', () => {
-            const command = commandInput.value.trim();
-            executeCommand(command);
-            commandInput.value = '';
-        });
-
-        commandInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                executeBtn.click();
+    // -------------------------------------------------------------------------
+    // 4. TRADUZIONE MULTILINGUE
+    // -------------------------------------------------------------------------
+    const langSelector = document.getElementById('language-selector');
+    
+    // Funzione di traduzione
+    const translatePage = (lang) => {
+        document.querySelectorAll('[data-lang-key]').forEach(element => {
+            const key = element.getAttribute('data-lang-key');
+            if (translations[key] && translations[key][lang]) {
+                element.textContent = translations[key][lang];
             }
         });
-        
-        // Messaggio di benvenuto all'apertura
-        typeOutput("LIMONE HACKER v3.0 // CYBERPUNK ACCESS GRANTED...");
-        typeOutput("Type 'help' for available commands.");
-    }
-    
-    // ---------------------------------------------
-    // 5. TRANSIZIONI PAGINA (Placeholder per effetto sonoro)
-    // ---------------------------------------------
-    // Poiché non posso includere file audio, questa funzione è solo un placeholder
-    // per dimostrare dove andrebbe il codice per l'audio.
-    function playClickSound() {
-        // const audio = new Audio('click.mp3'); // Sostituire con il tuo file audio
-        // audio.play().catch(e => console.error("Audio playback failed:", e));
-        console.log("SUONO DI CLICK (Placeholder)");
-    }
-    
-    document.querySelectorAll('a, button').forEach(element => {
-        if (!element.classList.contains('mode-toggle')) {
-            element.addEventListener('click', playClickSound);
-        }
+        document.documentElement.lang = lang; // Aggiorna l'attributo lang dell'HTML
+        localStorage.setItem('language', lang); // Salva la preferenza
+    };
+
+    // Seleziona la lingua e traduce
+    langSelector.addEventListener('change', (event) => {
+        translatePage(event.target.value);
     });
+
+    // Inizializza la lingua (se salvata)
+    const savedLang = localStorage.getItem('language') || 'it';
+    langSelector.value = savedLang;
+    translatePage(savedLang);
+
+
+    // -------------------------------------------------------------------------
+    // 5. TRANSIZIONI PAGINA (3D) E ANIMAZIONI BUTTON/SOUND
+    // -------------------------------------------------------------------------
+    
+    // Funzione per la transizione 3D
+    const transitionPage = (url) => {
+        document.body.style.transform = 'rotateY(90deg)';
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'transform 0.5s ease-in, opacity 0.5s ease-in';
+        
+        setTimeout(() => {
+            window.location.href = url;
+        }, 500); // 500ms per far completare la transizione prima del cambio pagina
+    };
+
+    // Aggiungi un'animazione di entrata per la pagina corrente (al caricamento)
+    document.body.style.transform = 'rotateY(0deg)';
+    document.body.style.opacity = '1';
+    document.body.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+
+
+    // Gestore per tutti i pulsanti che aprono nuove pagine
+    document.querySelectorAll('.modern-button[data-next-page], .nav-links a').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = button.getAttribute('data-next-page') || button.href;
+            
+            // Animazione Visiva (Aggiungi classe CSS per l'effetto)
+            button.classList.add('start-animation');
+
+            // Effetto Sonoro (Se disponibile)
+            // const clickSound = new Audio('path/to/click-sound.mp3'); 
+            // clickSound.play().catch(e => console.log("Sound error:", e));
+
+            // Esegui la transizione dopo una breve pausa per l'animazione del click
+            setTimeout(() => {
+                transitionPage(url);
+            }, 100); 
+        });
+    });
+
+    // Gestione pulsante "Inizia" e overlay (solo su index.html)
+    const startButton = document.getElementById('start-button');
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    const closeOverlayButton = document.querySelector('.close-overlay-button');
+    
+    if(startButton && welcomeOverlay) {
+        startButton.addEventListener('click', () => {
+             // Invece di navigare a welcome.html (che non è stato richiesto), mostriamo l'overlay
+             // Se si volesse la pagina separata, si userebbe `transitionPage('welcome.html')`
+             welcomeOverlay.style.display = 'flex';
+        });
+
+        closeOverlayButton.addEventListener('click', () => {
+            welcomeOverlay.style.display = 'none';
+        });
+    }
 
 });
