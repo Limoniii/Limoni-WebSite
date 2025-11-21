@@ -3,23 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>LIMONI WEB - About</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="about-background">
-    <div id="page-loader"><div id="progress-bar-container"><div id="progress-bar"></div></div><p style="color: var(--text-color); margin-top: 15px;">Spremitura in corso...</p></div>
-    <nav class="navbar"></nav> 
+<body data-page="about">
 
-    <main class="main-content">
-        <div class="text-box">
-            <p>Limoni Web è come Chow: imprevedibile, brillante e con un tocco di follia.</p>
-            <p>Fratello, questo sito è così veloce che neanche Jackie Chan riesce a starci dietro!</p>
+    <div id="loader-wrapper"><div id="loader-bar"></div></div>
+    
+    <nav id="navbar">...</nav> 
+
+    <main class="page-content about-page">
+        <div class="content-box">
+            <p class="content-text" data-lang-key="about-text-1">Limoni Web è come Chow: imprevedibile, brillante e con un tocco di follia.</p>
+            <p class="content-text" data-lang-key="about-text-2">Fratello, questo sito è così veloce che neanche Jackie Chan riesce a starci dietro!</p>
+            <button class="back-button" onclick="window.location.href='index.html'" data-lang-key="back-home">Torna indietro</button>
         </div>
-        <a href="index.html" class="back-home-btn">Torna indietro</a>
     </main>
 
-    <footer class="main-footer"></footer>
-    <script src="script.js"></script>
+    <footer id="footer">...</footer>
+
+    <style>
+        .about-page {
+            background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTl2dG8wdGJ1d3ljdmVnaWJtaW1zOHd3OW03c3U2cTYxYXBnNDE3bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xTiTnIilwuFFFpf2Cc/giphy.gif');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Rende la nav e il footer visibili nel file about.html (solo per il codice)
+        document.getElementById('navbar').innerHTML = document.querySelector('nav').innerHTML;
+        document.getElementById('footer').innerHTML = document.querySelector('footer').innerHTML;
+    </script>
 </body>
 </html>
