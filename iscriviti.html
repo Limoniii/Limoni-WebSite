@@ -1,40 +1,31 @@
-<!doctype html>
-<html lang="it">
+<!DOCTYPE html>
+<html lang="it" data-page="iscriviti">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title data-i18n="title_iscriviti">Iscriviti - LIMONI WEB</title>
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iscriviti — LIMONI WEB</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
-<body class="theme-dark">
-<header class="site-header">
-  <nav class="nav container"><div class="nav-left"><a href="index.html" class="nav-brand"><span class="brand-text">LIMONI WEB</span></a></div></nav>
-</header>
+<body class="theme-auto">
+  <div id="page-loader">
+    <div class="loader-bar"><span></span></div>
+  </div>
+  <header id="navbar"></header>
 
-<main class="hero" style="background-image:url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhtNzIwZDVvc216MnVvczRjcG5xZjQ0Y2NnaDd1dzZ5Nzg0aHgzYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/waqckZe7nj4oE/giphy.gif'); background-size:cover; background-position:center;">
-  <div class="hero-overlay"></div>
-  <div class="container page-box">
-    <div class="content-box">
-      <div class="center-text">
-        Fancolo Pannzone<br>
-        Tu vuoi inculare me?<br>
-        Congelati, o ti faccio saltare le chiappe!!!
+  <main class="page page-gif" style="--bg:url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhtNzIwZDVvc216MnVvczRjcG5xZjQ0Y2NnaDd1dzZ5Nzg0aHgzYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/waqckZe7nj4oE/giphy.gif');">
+    <section class="centered-card">
+      <div class="card framed">
+        <p class="card-line" data-i18n="sub_line1">Fancolo Pannzone</p>
+        <p class="card-line" data-i18n="sub_line2">Tu vuoi inculare me?</p>
+        <p class="card-line" data-i18n="sub_line3">Congelati, o ti faccio saltare le chiappe!!!</p>
       </div>
-      <button class="btn btn-small" onclick="goHome()" data-i18n="btn_back">Torna indietro</button>
-    </div>
-  </div>
-</main>
+      <div class="mini-actions">
+        <a class="mini-btn" href="index.html" data-i18n="btn_back">Torna indietro</a>
+      </div>
+    </section>
+  </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="centered">
-      <div class="footer-big">WEBSITE CREATED BY: I DON’T KNOW!!!</div>
-      <div class="footer-small">Tutti i diritti riservati a I DON’T KNOW</div>
-      <div class="footer-contact">Telefono: +39 0123456789</div>
-      <div class="footer-contact">Email: idontknow@blabla.hehe</div>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/js/main.js"></script>
+  <footer id="footer"></footer>
 </body>
 </html>
