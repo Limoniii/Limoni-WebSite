@@ -1,34 +1,25 @@
 <!DOCTYPE html>
-<html lang="it" data-page="about">
+<html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — LIMONI WEB</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-auto">
-  <div id="page-loader">
-    <div class="loader-bar"><span></span></div>
-  </div>
-  <header id="navbar"></header>
+<body class="about-background">
+    <div id="page-loader"><div id="progress-bar-container"><div id="progress-bar"></div></div><p style="color: var(--text-color); margin-top: 15px;">Spremitura in corso...</p></div>
+    <nav class="navbar"></nav> 
 
-  <main class="page page-gif" style="--bg:url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTl2dG8wdGJ1d3ljdmVnaWJtaW1zOHd3OW03c3U2cTYxYXBnNDE3bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xTiTnIilwuFFFpf2Cc/giphy.gif');">
-    <section class="centered-card">
-      <div class="card framed">
-        <p class="card-line" data-i18n="about_line1">
-          Limoni Web è come Chow: imprevedibile, brillante e con un tocco di follia.
-        </p>
-        <p class="card-line" data-i18n="about_line2">
-          Fratello, questo sito è così veloce che neanche Jackie Chan riesce a starci dietro!
-        </p>
-      </div>
-      <div class="mini-actions">
-        <a class="mini-btn" href="index.html" data-i18n="btn_back">Torna indietro</a>
-      </div>
-    </section>
-  </main>
+    <main class="main-content">
+        <div class="text-box">
+            <p>Limoni Web è come Chow: imprevedibile, brillante e con un tocco di follia.</p>
+            <p>Fratello, questo sito è così veloce che neanche Jackie Chan riesce a starci dietro!</p>
+        </div>
+        <a href="index.html" class="back-home-btn">Torna indietro</a>
+    </main>
 
-  <footer id="footer"></footer>
+    <footer class="main-footer"></footer>
+    <script src="script.js"></script>
 </body>
 </html>
