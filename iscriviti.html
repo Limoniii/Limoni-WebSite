@@ -1,31 +1,26 @@
 <!DOCTYPE html>
-<html lang="it" data-page="iscriviti">
+<html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Iscriviti — LIMONI WEB</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iscriviti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-auto">
-  <div id="page-loader">
-    <div class="loader-bar"><span></span></div>
-  </div>
-  <header id="navbar"></header>
+<body class="subscribe-background">
+    <div id="page-loader"><div id="progress-bar-container"><div id="progress-bar"></div></div><p style="color: var(--text-color); margin-top: 15px;">Spremitura in corso...</p></div>
+    <nav class="navbar"></nav> 
 
-  <main class="page page-gif" style="--bg:url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhtNzIwZDVvc216MnVvczRjcG5xZjQ0Y2NnaDd1dzZ5Nzg0aHgzYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/waqckZe7nj4oE/giphy.gif');">
-    <section class="centered-card">
-      <div class="card framed">
-        <p class="card-line" data-i18n="sub_line1">Fancolo Pannzone</p>
-        <p class="card-line" data-i18n="sub_line2">Tu vuoi inculare me?</p>
-        <p class="card-line" data-i18n="sub_line3">Congelati, o ti faccio saltare le chiappe!!!</p>
-      </div>
-      <div class="mini-actions">
-        <a class="mini-btn" href="index.html" data-i18n="btn_back">Torna indietro</a>
-      </div>
-    </section>
-  </main>
+    <main class="main-content">
+        <div class="text-box">
+            <p>Sei pronto per la vera spremuta?</p>
+            <p>La vitamina C sta per esplodere sul tuo schermo!</p>
+            <p>Congelati, o ti faccio saltare le chiappe... con la potenza del gusto!!!</p>
+        </div>
+        <a href="index.html" class="back-home-btn">Torna indietro</a>
+    </main>
 
-  <footer id="footer"></footer>
+    <footer class="main-footer"></footer>
+    <script src="script.js"></script>
 </body>
 </html>
