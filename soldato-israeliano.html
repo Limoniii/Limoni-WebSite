@@ -1,36 +1,29 @@
-<!doctype html>
-<html lang="it">
+<!DOCTYPE html>
+<html lang="it" data-page="israel">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title data-i18n="title_soldato_israeliano">Soldato Israeliano - LIMONI WEB</title>
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soldato Israeliano — LIMONI WEB</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
-<body class="theme-dark">
-<header class="site-header">
-  <nav class="nav container"><div class="nav-left"><a href="index.html" class="nav-brand"><span class="brand-text">LIMONI WEB</span></a></div></nav>
-</header>
-
-<main class="hero" style="background-image:url('https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MmQwdDc1ZWY0YnF1eXZha2toMG5qNmJxZnBkdWhiem5sM3ZtbzE5ayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jgo38wEND0D8A/giphy.gif'); background-size:cover; background-position:center;">
-  <div class="hero-overlay"></div>
-  <div class="container page-box">
-    <div class="content-box">
-      <div class="center-text">Sei un Soldato Israeliano, Complimenti Kolione</div>
-      <button class="btn btn-small" onclick="goHome()" data-i18n="btn_back">Torna indietro</button>
-    </div>
+<body class="theme-auto">
+  <div id="page-loader">
+    <div class="loader-bar"><span></span></div>
   </div>
-</main>
+  <header id="navbar"></header>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="centered">
-      <div class="footer-big">WEBSITE CREATED BY: I DON’T KNOW!!!</div>
-      <div class="footer-small">Tutti i diritti riservati a I DON’T KNOW</div>
-      <div class="footer-contact">Telefono: +39 0123456789</div>
-      <div class="footer-contact">Email: idontknow@blabla.hehe</div>
-    </div>
-  </div>
-</footer>
+  <main class="page page-gif" style="--bg:url('https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MmQwdDc1ZWY0YnF1eXZha2toMG5qNmJxZnBkdWhiem5sM3ZtbzE5ayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jgo38wEND0D8A/giphy.gif');">
+    <section class="centered-card">
+      <div class="card framed">
+        <p class="card-line" data-i18n="isr_line">Sei un Soldato Israeliano, Complimenti Kolione</p>
+      </div>
+      <div class="mini-actions">
+        <a class="mini-btn" href="index.html" data-i18n="btn_back">Torna indietro</a>
+      </div>
+    </section>
+  </main>
 
-<script src="assets/js/main.js"></script>
+  <footer id="footer"></footer>
 </body>
 </html>
