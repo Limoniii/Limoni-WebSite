@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it" data-page="hacker">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Limone Hacker — LIMONI WEB</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="theme-auto">
+  <div id="page-loader">
+    <div class="loader-bar"><span></span></div>
+  </div>
+  <header id="navbar"></header>
+
+  <main class="page page-hacker">
+    <section class="terminal-wrap">
+      <div class="terminal-header">
+        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+        <div class="term-title" data-i18n="hacker_title">LIMONE HACKER — TERMINALE</div>
+        <button class="theme-toggle" title="Toggle theme" aria-label="Toggle theme"></button>
+      </div>
+      <div class="terminal-body">
+        <pre id="terminal" class="typewriter" aria-live="polite"></pre>
+      </div>
+      <div class="terminal-controls">
+        <input id="cmdInput" class="cmd-input" type="text" placeholder="squeeze --juice" aria-label="Command input" />
+        <button id="runCmd" class="btn btn-acid" data-i18n="hacker_run">Esegui</button>
+      </div>
+      <div class="mini-actions">
+        <a class="mini-btn" href="index.html" data-i18n="btn_back">Torna indietro</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const term = document.getElementById('terminal');
+      const input = document.getElementById('cmdInput');
+      const run = document.getElementById('runCmd');
+
+      const lines = [
+        'boot: limoneOS v1.0.7',
+        'load: citrus-core [OK]',
+        'init: vitamin-C-injector [READY]',
+        'tip: try commands: squeeze --juice, limone.scan(), injectVitaminC()'
+      ];
+
+      let idx = 0;
+      function typeLine(text, cb) {
+        let i = 0;
+        function tick() {
+          if (i < text.length) {
+            term.textContent += text[i++];
+            requestAnimationFrame(tick);
+          } else {
+            term.textContent += '\\n';
+            cb && cb();
+          }
+        }
+        tick();
+      }
+      (function typeStartup(){
+        if (idx >= lines.length) return;
+        typeLine(lines[idx++], typeStartup);
+      })();
+
+      run.addEventListener('click', () => {
+        const cmd = (input.value || 'squeeze --juice').trim();
+        term.textContent += `> ${cmd}\\n`;
+        const frames = [
+          '[.] extracting pulp...',
+          '[..] compressing rind...',
+          '[...] injecting vitamin C...',
+          '[OK] operation complete: zest-level=MAX 🍋'
+        ];
+        let f = 0;
+        function step() {
+          term.textContent += frames[f++] + '\\n';
+          if (f < frames.length) setTimeout(step, 300);
+        }
+        step();
+        window.playClickSound && window.playClickSound();
+        if (/limone\\.scan\\(\\)/i.test(cmd)) {
+          term.textContent += 'scan: acidity 7.2 pH, sweetness 3/10, aroma ++\\n';
+        } else if (/injectVitaminC\\(\\)/i.test(cmd)) {
+          term.textContent += 'vitC: bloodstream saturated. glow enabled.\\n';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
