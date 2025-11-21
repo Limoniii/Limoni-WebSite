@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it" data-page="home">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LIMONI WEB</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Favicon SVG (base64, valido) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTgiIGZpbGw9IiNGRkQ0MDAiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik00NCwyMiBDNDgsMTYgNTQsMTYgNTgsMjIgQzU0LDI0IDQ4LDI0IDQ0LDIyIFoiIGZpbGw9IiM3OEMyNTciIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9zdmc+" />
+  <script defer src="script.js"></script>
+</head>
+<body class="theme-auto">
+  <div id="page-loader">
+    <div class="loader-bar"><span></span></div>
+  </div>
+
+  <header id="navbar"></header>
+
+  <main class="page page-home" style="--bg:url('https://images.unsplash.com/photo-1598960809231-5504c3b90a6f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <section class="hero">
+      <div class="logo-stack">
+        <svg class="lemon-logo" viewBox="0 0 200 120" width="220" height="120" aria-hidden="true">
+          <defs>
+            <linearGradient id="lemonGrad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stop-color="#FFD400"/>
+              <stop offset="100%" stop-color="#FFE766"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <path d="M100,15 C130,20 160,40 170,60 C160,80 130,100 100,105 C70,100 40,80 30,60 C40,40 70,20 100,15 Z"
+                fill="none" stroke="url(#lemonGrad)" stroke-width="5" stroke-linecap="round"
+                filter="url(#glow)" class="logo-path"/>
+          <path d="M130,25 C140,10 160,10 170,25 C160,30 140,30 130,25 Z"
+                fill="#78C257" stroke="black" stroke-width="2" opacity="0.9"/>
+        </svg>
+
+        <h1 class="site-title" data-i18n="title">LIMONI WEB</h1>
+        <div class="logo-text elegant" aria-hidden="true">LIMONI WEB</div>
+      </div>
+
+      <div class="cta-group">
+        <button class="btn btn-primary btn-particles" data-link="inizia" data-i18n="btn_start">Inizia</button>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn btn-red btn-explode" data-link="israel" data-i18n="btn_israel">Soldato Israeliano</button>
+        <button class="btn btn-blue btn-explode" data-link="palestina" data-i18n="btn_palestina">Soldato Palestinese</button>
+      </div>
+
+      <div class="cta-group">
+        <button class="btn btn-green btn-sparkle" data-link="iscriviti" data-i18n="btn_subscribe">Iscriviti</button>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+</body>
+</html>
