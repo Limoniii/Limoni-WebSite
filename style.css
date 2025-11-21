@@ -1,510 +1,417 @@
-/* ======================================= */
-/* 1. VARIABILI E TEMA SCURO (DARK MODE)   */
-/* ======================================= */
+/* -------------------------------------------------------------------------
+   RESET e BASE
+--------------------------------------------------------------------------*/
 :root {
-    /* Tema Chiaro (Light Mode) */
-    --background-color: #f7f7f7;
-    --text-color: #333;
-    --primary-color: #ffe000; /* Giallo Limone */
-    --secondary-color: #222;  /* Nero/Bordo */
-    --button-start-bg: #ffe000;
-    --button-start-text: #333;
-    --navbar-bg: rgba(255, 255, 255, 0.95);
-    --box-bg: rgba(0, 0, 0, 0.6);
-    --box-text: #fff;
-    --cyber-bg: #111;
-    --cyber-text: #0f0;
+    --yellow: #ffdb58; /* Giallo Limone */
+    --black: #000000;
+    --white: #ffffff;
+    --red: #e74c3c;
+    --blue: #3498db;
+    --green: #2ecc71;
+    --text-color: var(--black);
+    --bg-color: var(--white);
+    --box-bg-color: rgba(0, 0, 0, 0.7);
+    --box-border-color: rgba(255, 255, 255, 0.5);
+    --nav-bg: rgba(255, 255, 255, 0.9);
+    --footer-bg: rgba(255, 255, 255, 0.9);
+    --transition-speed: 0.4s;
 }
 
-[data-theme='dark'] {
-    /* Tema Scuro (Dark Mode) */
-    --background-color: #1a1a1a;
-    --text-color: #e0e0e0;
-    --primary-color: #fffb00;
-    --secondary-color: #ccc;
-    --button-start-bg: #fffb00;
-    --button-start-text: #111;
-    --navbar-bg: rgba(26, 26, 26, 0.95);
-    --box-bg: rgba(255, 255, 255, 0.1);
-    --box-text: #fff;
-    --cyber-bg: #000;
-    --cyber-text: #00ff00;
+/* Modalità Dark */
+body.dark-mode {
+    --text-color: var(--white);
+    --bg-color: #1a1a1a;
+    --box-bg-color: rgba(255, 255, 255, 0.1);
+    --box-border-color: rgba(255, 255, 255, 0.8);
+    --nav-bg: rgba(26, 26, 26, 0.95);
+    --footer-bg: rgba(26, 26, 26, 0.95);
 }
 
-/* ======================================= */
-/* 2. BASE E UTILITY                       */
-/* ======================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-family: Arial, sans-serif;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--background-color);
+    background: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* Immagine di Sfondo per le Pagine Principali */
+    /* Sfondo principale (index.html) */
     background-image: url('https://images.unsplash.com/photo-1598960809231-5504c3b90a6f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
-    background-position: center;
     background-attachment: fixed;
-}
-
-/* Sfondo per Pagine specifiche */
-.gif-background {
-    background-image: url('https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MmQwdDc1ZWY0YnF1eXZha2toMG5qNmJxZnBkdWhiem5sM3ZtbzE5ayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jgo38wEND0D8A/giphy.gif');
-    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-}
-.about-background {
-    background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTl2dG8wdGJ1d3ljdmVnaWJtaW1zOHd3OW03c3U2cTYxYXBnNDE3bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xTiTnIilwuFFFpf2Cc/giphy.gif');
-}
-.subscribe-background {
-    background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhtNzIwZDVvc216MnVvczRjcG5xZjQ0Y2NnaDd1dzZ5Nzg0aHgzYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/waqckZe7nj4oE/giphy.gif');
 }
 
-/* ======================================= */
-/* 3. HEADER E TITOLO                      */
-/* ======================================= */
-.main-header {
-    text-align: center;
-    padding: 40px 20px 20px;
-}
-
+/* -------------------------------------------------------------------------
+   HEADER E TITOLO
+--------------------------------------------------------------------------*/
 .main-title {
-    font-family: 'Impact', sans-serif;
     font-size: 4rem;
-    color: var(--primary-color);
-    text-transform: uppercase;
     font-weight: bold;
     text-align: center;
-    margin: 0;
-    /* Bordo sottile nero */
+    text-transform: uppercase;
+    color: var(--yellow);
     text-shadow: 
-        -1px -1px 0 var(--secondary-color), 
-        1px -1px 0 var(--secondary-color), 
-        -1px 1px 0 var(--secondary-color), 
-        1px 1px 0 var(--secondary-color);
+        -1px -1px 0 var(--black), 
+        1px -1px 0 var(--black), 
+        -1px 1px 0 var(--black), 
+        1px 1px 0 var(--black);
+    margin: 30px 0 20px;
+    animation: title-fade-in 1s ease-out;
 }
 
-/* ======================================= */
-/* 4. LOGO E ANIMAZIONE                    */
-/* ======================================= */
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
+@keyframes title-fade-in {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.lemon-svg {
-    width: 100px;
-    height: 100px;
-    stroke: var(--primary-color);
-    stroke-width: 5;
-    fill: none;
-    animation: 
-        draw 2s cubic-bezier(0.4, 0, 0.2, 1) forwards, 
-        fade-in-fill 0.5s 2s forwards;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
-}
-
-@keyframes draw {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-@keyframes fade-in-fill {
-    to {
-        fill: var(--primary-color);
-        stroke: var(--secondary-color);
-    }
-}
-
-/* ======================================= */
-/* 5. NAV BAR (NASCONDI/MOSTRA)            */
-/* ======================================= */
-.navbar {
+/* -------------------------------------------------------------------------
+   NAVBAR DINAMICA E UTILITY
+--------------------------------------------------------------------------*/
+#navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--navbar-bg);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
     display: flex;
-    justify-content: center;
-    padding: 15px 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: var(--nav-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
     transform: translateY(0);
-    transition: transform 0.3s ease-out, background 0.3s;
+    transition: transform 0.3s ease-in-out, background var(--transition-speed);
 }
 
-.navbar.hidden {
+#navbar.hidden {
     transform: translateY(-100%);
 }
 
-.nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: color 0.2s, background-color 0.2s;
-}
-
-.nav-links a:hover {
-    color: var(--button-start-text);
-    background-color: var(--primary-color);
-}
-
-.nav-controls {
+.nav-links, .nav-utility {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.social-logo {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(var(--text-color-invert));
-}
-
-.nav-select, .mode-toggle {
-    padding: 5px 8px;
-    border-radius: 5px;
-    background: transparent;
+.nav-item {
     color: var(--text-color);
-    border: 1px solid var(--text-color);
-    cursor: pointer;
-}
-.mode-toggle {
-    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
 }
 
-/* ======================================= */
-/* 6. CONTENUTO PRINCIPALE                 */
-/* ======================================= */
-.main-content {
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Icone Social */
+.social-icon {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color 0.2s;
+}
+.social-icon:hover {
+    color: var(--yellow);
+}
+
+/* Selettore Lingua e Toggle Mode */
+#language-selector, #mode-toggle {
+    cursor: pointer;
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+#mode-toggle {
+    font-size: 1.2rem;
+    border: none;
+}
+
+/* -------------------------------------------------------------------------
+   LOGO ANIMATO
+--------------------------------------------------------------------------*/
+.logo-container {
+    text-align: center;
+    margin: 30px auto;
+}
+
+.lemon-logo {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* Animazione del tratto (auto-disegno) */
+@keyframes dash-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.lemon-logo path {
+    stroke: var(--yellow);
+    animation: dash-draw 2s ease-in-out forwards;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--yellow);
+    opacity: 0;
+    animation: text-appear 1s 2s forwards; /* Appare dopo il disegno */
+}
+
+@keyframes text-appear {
+    to { opacity: 1; }
+}
+
+/* -------------------------------------------------------------------------
+   MAIN CONTENT E PULSANTI
+--------------------------------------------------------------------------*/
+.page-content {
     flex-grow: 1;
+    padding-top: 100px; /* Spazio per la navbar */
+    padding-bottom: 50px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 120px 20px 40px; /* Offset per navbar fissa */
-    text-align: center;
 }
 
-/* Box di Testo Centrale */
-.text-box {
-    background-color: var(--box-bg);
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 80%;
-    margin: 20px auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.text-box p {
-    color: var(--box-text);
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-/* ======================================= */
-/* 7. PULSANTI E ANIMAZIONI                */
-/* ======================================= */
 .button-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 20px;
-    margin-top: 40px;
+    margin: 30px 0;
 }
 
-.main-button {
-    font-size: 1.5rem;
+.modern-button {
     padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
     text-transform: uppercase;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
-    text-decoration: none;
 }
 
-.main-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+.modern-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.btn-start {
-    background-color: var(--button-start-bg);
-    color: var(--button-start-text);
+.yellow-button {
+    background-color: var(--yellow);
+    color: var(--black);
 }
 
-.btn-red {
-    background-color: #ff4757;
-    color: #fff;
+.red-button {
+    background-color: var(--red);
+    color: var(--white);
 }
 
-.btn-blue {
-    background-color: #1e90ff;
-    color: #fff;
+.blue-button {
+    background-color: var(--blue);
+    color: var(--white);
 }
 
-.btn-green {
-    background-color: #2ed573;
-    color: #fff;
-}
-
-.back-home-btn {
-    display: inline-block;
+.green-button {
+    background-color: var(--green);
+    color: var(--white);
     margin-top: 20px;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: var(--button-start-text);
-    text-decoration: none;
-    border-radius: 20px;
-    font-weight: 600;
-    transition: opacity 0.2s;
-}
-.back-home-btn:hover {
-    opacity: 0.8;
 }
 
-/* Animazione Particelle (Semplificata) */
-.particle-effect {
-    position: relative;
-    overflow: hidden;
+/* Animazioni al Click */
+.modern-button.start-animation {
+    animation: particle-burst 0.5s ease-out;
+}
+.animated-button.start-animation {
+    animation: explosion 0.5s ease-out;
+}
+.green-button.start-animation {
+    animation: sparkle 0.5s ease-out;
 }
 
-.particle-effect::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, var(--primary-color) 10%, transparent 70%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.5s ease-out;
-    pointer-events: none;
-}
+/* Qui inseriresti le animazioni con pseudo-elementi per particelle/esplosioni, 
+   ma per la complessità si usa JS per la transizione di pagina e il feedback visivo immediato.
+   L'effetto 3D è gestito nel JS (vedi sotto). */
 
-.particle-effect:active::before {
-    transform: translate(-50%, -50%) scale(5);
-}
-
-/* ======================================= */
-/* 8. FOOTER                               */
-/* ======================================= */
-.main-footer {
-    background-color: var(--secondary-color);
-    padding: 20px;
-    color: #fff;
-    text-align: center;
-    margin-top: auto;
-    width: 100%;
-    border-top: 3px solid var(--primary-color);
-}
-
-.footer-text {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    display: inline-block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.footer-info {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-    font-size: 0.9rem;
-}
-
-.footer-info p {
-    margin: 5px 0;
-    padding-left: 10px;
-}
-
-/* ======================================= */
-/* 9. PAGE LOADER (PROGRESS BAR)           */
-/* ======================================= */
-#page-loader {
+/* -------------------------------------------------------------------------
+   PAGE LOADER
+--------------------------------------------------------------------------*/
+#loader-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--background-color);
-    z-index: 9999;
+    background: var(--bg-color);
+    z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    transition: opacity 0.5s;
+    transition: opacity 0.5s, visibility 0.5s;
 }
 
-#progress-bar-container {
+#loader-bar {
     width: 80%;
     max-width: 400px;
     height: 10px;
-    background-color: #ccc;
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     overflow: hidden;
 }
 
-#progress-bar {
+#loader-bar:after {
+    content: '';
+    display: block;
     height: 100%;
-    width: 0%;
-    background-color: var(--primary-color);
-    transition: width 0.1s linear;
-}
-
-/* ======================================= */
-/* 10. CYBERPUNK TERMINALE (hacker.html)   */
-/* ======================================= */
-.hacker-terminal {
-    background-color: var(--cyber-bg);
-    color: var(--cyber-text);
-    font-family: 'Consolas', 'Monospace', monospace;
-    min-height: 80vh;
-    width: 90%;
-    max-width: 900px;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 20px var(--cyber-text);
-    border: 2px solid var(--cyber-text);
-    margin-top: 100px;
-    text-align: left;
-}
-
-.terminal-line {
-    margin-bottom: 5px;
-}
-
-.prompt {
-    color: var(--primary-color);
-    margin-right: 5px;
-}
-
-.input-command {
-    background: transparent;
-    border: none;
-    color: var(--cyber-text);
-    width: calc(100% - 70px);
-    outline: none;
-    font-family: inherit;
-    font-size: 1rem;
-    caret-color: var(--cyber-text);
-}
-
-.output-line {
-    color: #0ff; /* Colore Acido secondario */
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-}
-
-.execute-btn {
-    background-color: var(--primary-color);
-    color: var(--cyber-bg);
-    padding: 10px 20px;
-    border: none;
+    width: 0;
+    background: var(--yellow);
     border-radius: 5px;
+    transition: width 0.3s;
+}
+
+#loader-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   BOX TESTO CENTRATO (Per pagine secondarie e overlay)
+--------------------------------------------------------------------------*/
+.content-box {
+    background: var(--box-bg-color);
+    border: 1px solid var(--box-border-color);
+    padding: 40px;
+    margin: 50px auto;
+    border-radius: 10px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.content-text {
+    font-size: 1.1rem;
+    color: var(--white);
+    text-shadow: 0 0 3px var(--black);
+    margin-bottom: 15px;
+}
+
+.back-button {
+    background-color: transparent;
+    color: var(--yellow);
+    border: 1px solid var(--yellow);
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-top: 20px;
     cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.back-button:hover {
+    background-color: var(--yellow);
+    color: var(--black);
+}
+
+/* -------------------------------------------------------------------------
+   FOOTER
+--------------------------------------------------------------------------*/
+#footer {
+    padding: 20px 30px;
+    background: var(--footer-bg);
+    margin-top: auto; /* Spinge il footer in basso */
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: background var(--transition-speed);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-title {
+    font-size: 1.2rem;
     font-weight: bold;
-    margin-top: 15px;
+    color: var(--text-color);
+    text-shadow: 0 0 1px var(--black);
+    margin-bottom: 15px;
 }
 
-/* Effetto Digitando */
-.typing {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+.footer-details {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+.aligned-left {
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-shadow: 0 0 1px var(--black);
 }
 
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--cyber-text); }
-}
-
-/* ======================================= */
-/* 11. MEDIA QUERIES (RESPONSIVITÀ)        */
-/* ======================================= */
+/* -------------------------------------------------------------------------
+   RESPONSIVITA' (Mobile First)
+--------------------------------------------------------------------------*/
 @media (max-width: 768px) {
     .main-title {
         font-size: 2.5rem;
     }
 
-    .navbar {
-        padding: 10px;
+    #navbar {
         flex-direction: column;
-        align-items: center;
+        padding: 10px;
     }
-
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    .nav-links, .nav-utility {
         margin-top: 10px;
+        gap: 8px;
     }
-
-    .nav-links a {
-        margin: 5px 10px;
+    .nav-item {
+        padding: 5px 10px;
         font-size: 0.9rem;
     }
 
-    .nav-controls {
-        margin-top: 10px;
-        gap: 10px;
+    .button-group {
+        flex-direction: column;
     }
 
-    .button-group {
-        width: 100%;
-        padding: 0 10px;
-    }
-    
-    .main-button {
-        font-size: 1.2rem;
+    .modern-button {
+        font-size: 1rem;
         padding: 12px 25px;
         width: 100%;
         max-width: 300px;
     }
-
-    .text-box {
-        max-width: 95%;
-        padding: 20px;
-    }
-
-    .text-box p {
-        font-size: 1rem;
-    }
     
-    .footer-info {
+    .content-box {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .footer-content {
+        text-align: center;
+    }
+    .footer-details {
+        align-items: center;
+    }
+    .aligned-left {
         text-align: center;
     }
 }
