@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iscriviti</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>LIMONI WEB - Iscriviti</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="subscribe-background">
-    <div id="page-loader"><div id="progress-bar-container"><div id="progress-bar"></div></div><p style="color: var(--text-color); margin-top: 15px;">Spremitura in corso...</p></div>
-    <nav class="navbar"></nav> 
+<body data-page="limone-hacker">
 
-    <main class="main-content">
-        <div class="text-box">
-            <p>Sei pronto per la vera spremuta?</p>
-            <p>La vitamina C sta per esplodere sul tuo schermo!</p>
-            <p>Congelati, o ti faccio saltare le chiappe... con la potenza del gusto!!!</p>
+    <div id="loader-wrapper"><div id="loader-bar"></div></div>
+    
+    <nav id="navbar">...</nav> 
+
+    <main class="page-content hacker-page">
+        <div class="content-box">
+            <p class="content-text" data-lang-key="subscribe-msg-1">Iscriviti per accedere ai contenuti esclusivi.</p>
+            <p class="content-text" data-lang-key="subscribe-msg-2">Entra nella community e scopri il lato oscuro del Limone Web.</p>
+            <p class="content-text" data-lang-key="subscribe-msg-3">Non perderti gli aggiornamenti!</p>
+            <button class="back-button" onclick="window.location.href='index.html'" data-lang-key="back-home">Torna indietro</button>
         </div>
-        <a href="index.html" class="back-home-btn">Torna indietro</a>
     </main>
 
-    <footer class="main-footer"></footer>
-    <script src="script.js"></script>
+    <footer id="footer">...</footer>
+
+    <style>
+        .hacker-page {
+            /* GIF originale: https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhtNzIwZDVvc216MnVvczRjcG5xZjQ0Y2NnaDd1dzZ5Nzg0aHgzYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/waqckZe7nj4oE/giphy.gif */
+            background-image: url('https://media.giphy.com/media/waqckZe7nj4oE/giphy.gif');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
